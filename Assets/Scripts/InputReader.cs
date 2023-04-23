@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Player;
 
+
 public class InputReader : MonoBehaviour 
 {
     [SerializeField] private PlayerEntity _playerEntity;
@@ -9,7 +10,7 @@ public class InputReader : MonoBehaviour
 
     private void Update()
     {
-        _horizontalDirection = Input.GetAxisRaw("Horizontal"); //-1 0 1
+        _horizontalDirection = Input.GetAxisRaw("Horizontal"); 
 
         if(Input.GetButtonDown("Jump"))
         {

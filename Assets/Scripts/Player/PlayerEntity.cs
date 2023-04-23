@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using Core.Tools;
+using Core.Enums;
 
 namespace Player
 {
@@ -10,16 +11,16 @@ namespace Player
     {
         [Header ("HorizontalMovement")]
         [SerializeField] private float _horizontalSpeed;
-        [SerializeField] private bool _faceRight;
+        [SerializeField] private Direction _direction;     
 
         [Header("Jump")]
         [SerializeField] private float _jumpForce;
-       // [SerializeField] private float _gravityScale; //скоріш за все мені не треба
+
+        [SerializeField] private DirectionalCameraPair _cameras;
 
         private Rigidbody2D _rigidbody;
 
         private bool _isJumping;
-     //   private float _startJumpVerticalPosition; //видалити якщо нічого не змінеться
        
 
         private void Start()
@@ -53,14 +54,12 @@ namespace Player
 
             _isJumping = true;
             _rigidbody.AddForce(Vector2.up * _jumpForce);
-          //  _rigidbody.gravityScale = _gravityScale;    
-          //  _startJumpVerticalPosition = transform.position.y; //delete
         }
 
         private void SetDirection(float direction)
         {
-            if((_faceRight && direction < 0) || 
-                (!_faceRight && direction >0))
+            if((_direction==Direction.Right && direction < 0) || 
+                (_direction==Direction.Left && direction >0))
             {
                 Flip();
             }
@@ -69,12 +68,16 @@ namespace Player
         private void Flip()
         {
             transform.Rotate(0, 180, 0);
-            _faceRight = !_faceRight;
+            _direction= _direction == Direction.Right ? Direction.Left : Direction.Right;
+            foreach (var cameraPair in _cameras.DirectionalCameras)
+            {
+                cameraPair.Value.enabled = cameraPair.Key == _direction;
+            }
         }
 
         private void UpdateJump()
         {
-            if(_rigidbody.velocity.y <0) //&& _rigidbody.position.y <= _startJumpVerticalPosition
+            if(_rigidbody.velocity.y <0)
             {
                 ResetJump();
                 return;
@@ -84,11 +87,9 @@ namespace Player
 
         }
 
-        private void ResetJump()    //delete maybe
+        private void ResetJump()
         {
             _isJumping = false; 
-           // _rigidbody.position = new Vector2(_rigidbody.position.x, _startJumpVerticalPosition);
-           // _rigidbody.gravityScale = 0;
         }
     }
 
