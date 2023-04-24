@@ -104,28 +104,28 @@ namespace Player
             _isJumping = false; 
         }
 
-        //public void StartAttack()
-        //{
-        //    if (!_animator.PlayAnimation(AnimationType.Attack,true))
-        //    {
-        //        return;
-        //    }
-        //    _animator.ActionRequested += Attack;
-        //    _animator.AnimationEnded += EndAttack;
-        //}
+        public void StartAttack()
+        {
+            if (!_animator.PlayAnimation(AnimationType.Attack, true))
+            {
+                return;
+            }
+            _animator.ActionRequested += Attack;
+            _animator.AnimationEnded += EndAttack;
+        }
 
-        //private void Attack()
-        //{
-        //    Debug.Log("Attack");
-        //}
+        private void Attack()
+        {
+            Debug.Log("Attack");
+        }
 
-        //private void EndAttack()
-        //{
-        //    _animator.ActionRequested -= Attack;
-        //    _animator.AnimationEnded -= EndAttack;
-        //    _animator.PlayAnimation(AnimationType.Attack,false);
+        private void EndAttack()
+        {
+            _animator.ActionRequested -= Attack;
+            _animator.AnimationEnded -= EndAttack;
+            _animator.PlayAnimation(AnimationType.Attack, false);
 
-        //}
+        }
     }
 
 }

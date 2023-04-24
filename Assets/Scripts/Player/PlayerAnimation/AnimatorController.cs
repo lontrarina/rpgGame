@@ -7,37 +7,37 @@ namespace Player.PlayerAnimation
     {
         private AnimationType _currentAnimationType;
 
-     //   public event Action ActionRequested;
-      //  public event Action AnimationEnded;
+        public event Action ActionRequested;
+        public event Action AnimationEnded;
 
-        public void PlayAnimation(AnimationType animationType, bool active)
+        public bool PlayAnimation(AnimationType animationType, bool active)
         {
             if (!active)
             {
                 if (_currentAnimationType == AnimationType.Idle || _currentAnimationType != animationType)
                 {
-                    return;
+                    return false;
                 }
                 _currentAnimationType = AnimationType.Idle;
                 PlayAnimation(_currentAnimationType);
-                return;
+                return false;
             }
 
             if (_currentAnimationType >= animationType)
             {
-                return;
+                return false;
             }
 
             _currentAnimationType = animationType;
             PlayAnimation(_currentAnimationType);
-            return;
+            return true;
 
         }
 
         protected abstract void PlayAnimation(AnimationType animationType);
 
-       // protected void OnActionRequested() => ActionRequested?.Invoke();
-     //   protected void OnAnimationEnded() => AnimationEnded?.Invoke();
+        protected void OnActionRequested() => ActionRequested?.Invoke();
+        protected void OnAnimationEnded() => AnimationEnded?.Invoke();
 
     }
 }
