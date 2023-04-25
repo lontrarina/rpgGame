@@ -12,7 +12,7 @@ public class InputReader : MonoBehaviour
     {
         _horizontalDirection = Input.GetAxisRaw("Horizontal"); 
 
-        if(Input.GetButtonDown("Jump"))
+        if(Input.GetButtonDown("Jump")&&!_playerEntity.GroundCheck())
         {
             _playerEntity.Jump();
         }
