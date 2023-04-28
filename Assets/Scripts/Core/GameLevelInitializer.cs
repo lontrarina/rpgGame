@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using Player;
 using System.Collections.Generic;
+using InputReader;
 
-namespace Core
+namespace Core 
 {
     public class GameLevelInitializer: MonoBehaviour
     {
@@ -17,7 +18,7 @@ namespace Core
         private void Awake()
         {
             _externalDevicesInput = new ExternalDevicesInputReader();
-            _playerBrain = new PlayerBrain(_playerEntity, new List<IEntityInputSource>
+            _playerBrain = new PlayerBrain(_playerEntity, new List <IEntityInputSource>
             {
                 _gameUIInputView,
                 _externalDevicesInput

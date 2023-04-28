@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using InputReader;
 
 namespace Player
 {
@@ -16,11 +17,11 @@ namespace Player
         public void OnFixedUpdate()
         {
             _playerEntity.MoveHorizontally(GetHorizontalDirection());
-            if (isJump)
+            if (IsJump)
             {
                 _playerEntity.Jump();
             }
-            if (isAttack)
+            if (IsAttack)
             {
                 _playerEntity.StartAttack();
             }
@@ -44,7 +45,7 @@ namespace Player
             return 0;
         }
 
-        private bool isJump => _inputSources.Any(source => source.Jump);
-        private bool isAttack => _inputSources.Any(source => source.Attack);
+        private bool IsJump => _inputSources.Any(source => source.Jump);
+        private bool IsAttack => _inputSources.Any(source => source.Attack);
     }
 }

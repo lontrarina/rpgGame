@@ -8325,17 +8325,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 1005230480}
-  _horizontalSpeed: 8
-  _direction: 0
-  _jumpForce: 1000
+  _directionalMovementData:
+    <HorizontalSpeed>k__BackingField: 8
+    <Direction>k__BackingField: 0
+  _jumpData:
+    <JumpForce>k__BackingField: 1000
+    <BoxSize>k__BackingField: {x: 0.1, y: 0.1}
+    <MaxDistance>k__BackingField: 2
+    <LayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 8
   _cameras:
     _rightCamera: {fileID: 775918173}
     _leftCamera: {fileID: 1265666276}
-  _boxSize: {x: 0.1, y: 0.1}
-  _maxDistance: 2
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!95 &1005230478
 Animator:
   serializedVersion: 5
