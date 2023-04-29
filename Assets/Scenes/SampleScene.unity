@@ -10015,7 +10015,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.0359817, y: 1.3571806, z: -10}
+  m_LocalPosition: {x: -7.3843746, y: 1.3571806, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10370,7 +10370,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 1005230480}
   _directionalMovementData:
-    <HorizontalSpeed>k__BackingField: 8
     <Direction>k__BackingField: 0
   _jumpData:
     <JumpForce>k__BackingField: 1000
@@ -24242,6 +24241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerEntity: {fileID: 1005230477}
   _gameUIInputView: {fileID: 1689895351}
+  _statsStorage: {fileID: 11400000, guid: 9681b9ccc5916ca4c9c5f0e06c0d262e, type: 2}
 --- !u!4 &1658194258
 Transform:
   m_ObjectHideFlags: 0

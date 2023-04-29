@@ -5,6 +5,7 @@ using Core.Animation;
 using Core.Movement.Data;
 using Core.Movement.Controller;
 using Core.Services.Updater;
+using StatsSystem;
 
 namespace Player
 {
@@ -14,7 +15,6 @@ namespace Player
     public class PlayerEntity : MonoBehaviour, IDisposable
     {
         [SerializeField] private AnimatorController _animator;
-
         [SerializeField] private DirectionalMovementData _directionalMovementData;
         [SerializeField] private JumpData _jumpData;
         [SerializeField] private DirectionalCameraPair _cameras;
@@ -24,12 +24,13 @@ namespace Player
         private Jumper _jumper;
 
         
-        private void Start()
+        public void Initialize(IStatValueGiver statValueGiver)
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             ProjectUpdater.Instance.UpdateCalled += OnUpdate;
-            _directionalMover = new DirectionalMover(_rigidbody, _directionalMovementData);
-            _jumper = new Jumper(_rigidbody, _jumpData);
+            _directionalMover = new DirectionalMover(_rigidbody, _directionalMovementData, statValueGiver);
+
+            _jumper = new Jumper(_rigidbody, _jumpData, statValueGiver);
         }
 
         private void OnUpdate()
