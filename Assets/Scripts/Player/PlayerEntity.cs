@@ -1,15 +1,17 @@
 using UnityEngine;
+using System;
 using Core.Tools;
 using Core.Animation;
 using Core.Movement.Data;
 using Core.Movement.Controller;
+using Core.Services.Updater;
 
 namespace Player
 {
 
     [RequireComponent(typeof(Rigidbody2D))]
 
-    public class PlayerEntity : MonoBehaviour
+    public class PlayerEntity : MonoBehaviour, IDisposable
     {
         [SerializeField] private AnimatorController _animator;
 
@@ -21,14 +23,16 @@ namespace Player
         private DirectionalMover _directionalMover;
         private Jumper _jumper;
 
+        
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
+            ProjectUpdater.Instance.UpdateCalled += OnUpdate;
             _directionalMover = new DirectionalMover(_rigidbody, _directionalMovementData);
             _jumper = new Jumper(_rigidbody, _jumpData);
         }
 
-        private void Update()
+        private void OnUpdate()
         {
             if (_jumper.IsJumping)
             {
@@ -37,6 +41,7 @@ namespace Player
             UpdateAnimations();
             UpdateCameras();
         }
+        public void Dispose() => ProjectUpdater.Instance.UpdateCalled -= OnUpdate;
 
         public void MoveHorizontally(float direction)=>_directionalMover.MoveHorizontally(direction);
 

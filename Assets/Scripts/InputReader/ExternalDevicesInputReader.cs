@@ -1,15 +1,31 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using System;
+using Core.Services.Updater;
 
 namespace InputReader
 {
-    public class ExternalDevicesInputReader : IEntityInputSource
+    public class ExternalDevicesInputReader : IEntityInputSource, IDisposable
     {
 
         public float HorizontalDirection => Input.GetAxisRaw("Horizontal");
         public bool Jump { get; private set; }
         public bool Attack { get; private set; }
-        public void OnUpdate()
+
+        public ExternalDevicesInputReader()
+        {
+            ProjectUpdater.Instance.UpdateCalled += OnUpdate;
+        }
+
+        public void ResetOneTimeActions()
+        {
+            Jump = false;
+            Attack = false;
+        }
+
+        public void Dispose() => ProjectUpdater.Instance.UpdateCalled -= OnUpdate;
+
+        private void OnUpdate()
         {
             if (Input.GetButtonDown("Jump"))
             {
@@ -19,15 +35,8 @@ namespace InputReader
             {
                 Attack = true;
             }
-
         }
 
         private bool IsPointerOverUi() => EventSystem.current.IsPointerOverGameObject();
-
-        public void ResetOneTimeActions()
-        {
-            Jump = false;
-            Attack = false;
-        }
     }
 }
