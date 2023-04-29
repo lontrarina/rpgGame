@@ -7849,7 +7849,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.9866605, y: -0.21000004, z: -10}
+  m_LocalPosition: {x: -10.866287, y: 1.3571806, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8041,7 +8041,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775918172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.9866605, y: -0.21000004, z: -10}
+  m_LocalPosition: {x: 4.278805, y: 1.3571806, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8063,6 +8063,8 @@ GameObject:
   - component: {fileID: 1005230475}
   - component: {fileID: 1005230477}
   - component: {fileID: 1005230476}
+  - component: {fileID: 1005230478}
+  - component: {fileID: 1005230480}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: Untagged
@@ -8086,7 +8088,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: fcf94f5f917797641ad877228fb41b68, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -8151,7 +8153,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005230471}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.47, y: -4.06, z: 0}
+  m_LocalPosition: {x: -6.58, y: -3.06, z: 0}
   m_LocalScale: {x: 7, y: 7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8167,7 +8169,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1005230471}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: fcf94f5f917797641ad877228fb41b68, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -8199,12 +8201,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ecb1ebbe525fa4fa470933950fa7ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 1005230480}
   _horizontalSpeed: 8
   _direction: 0
   _jumpForce: 1000
   _cameras:
     _rightCamera: {fileID: 775918173}
     _leftCamera: {fileID: 1265666276}
+  _boxSize: {x: 0.1, y: 0.1}
+  _maxDistance: 2
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!95 &1005230478
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005230471}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c11a9882b0087a488b45db0eb7c8fa8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1005230480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005230471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbb8235790263854285068ebf043b966, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1020097989
 GameObject:
   m_ObjectHideFlags: 0
@@ -8230,7 +8270,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020097989}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.63, y: 10.5, z: -0.066453815}
+  m_LocalPosition: {x: -7.13, y: 10.41, z: -0.066453815}
   m_LocalScale: {x: 9.7950325, y: 9.7950325, z: 9.7950325}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8440,7 +8480,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265666275}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.096977, y: -0.21000004, z: -10}
+  m_LocalPosition: {x: -10.866287, y: 1.3571806, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8521,7 +8561,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -661575665
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -19915,7 +19955,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486494864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.32, y: 1.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19939,7 +19979,7 @@ GameObject:
   - component: {fileID: 1886088699}
   - component: {fileID: 1886088698}
   - component: {fileID: 1886088697}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Earth Platforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28756,7 +28796,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050467643}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.842041, y: -11.07585, z: 0.066453815}
+  m_LocalPosition: {x: -3.25, y: -10.61, z: 0.066453815}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
